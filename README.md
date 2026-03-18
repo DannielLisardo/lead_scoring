@@ -16,6 +16,29 @@ Este projeto busca construir um modelo que estime a **probabilidade de conversã
 
 ---
 
+# Arquitetura de Dados (Medallion)
+
+A preparação dos dados seguiu o padrão **Medallion Architecture**, com separação em camadas:
+
+- **Bronze**: ingestão dos dados brutos dos leads
+- **Silver**: limpeza, padronização e enriquecimento dos dados
+- **Gold**: dataset final consolidado, pronto para consumo pelo modelo
+
+As principais etapas de tratamento e engenharia de features foram realizadas nas camadas **Silver e Gold**, incluindo:
+
+- tratamento de valores inconsistentes e dados faltantes  
+- padronização de variáveis categóricas  
+- criação de variáveis temporais (hora do dia, dia da semana, mês)  
+- cálculo de métricas históricas, como:
+  - taxa de conversão por funil  
+  - taxa de conversão por vendedor  
+  - taxa de conversão por vendedor dentro do funil  
+- agregações de volume de leads por contexto  
+
+Essa separação garante maior organização, reprodutibilidade e alinhamento com práticas modernas de engenharia de dados.
+
+---
+
 # Dados Utilizados
 
 O dataset inclui informações como:
